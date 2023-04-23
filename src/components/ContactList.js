@@ -1,27 +1,29 @@
 import React from "react";
 import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from "react-redux";
-import { deleteContact } from "redux/phoneSlice";
+import { deleteContact } from "redux/operations";
+import { selectFilteredContacts } from "redux/selectors";
 
 
-const ContactList =()=> {
+const ContactList =({id})=> {
+
+
+  const contacts = useSelector(selectFilteredContacts);
   const dispatch = useDispatch();
-  const contacts = useSelector(state=>state.contacts);
- const filter = useSelector(state => state.filter);
+  const handleDeleteContact = ()=>{
+    dispatch(deleteContact(id))
+  }
+  
 
- const filterContacts = contacts.filter(({name, number})=> 
-  name.toLocaleLowerCase().includes(filter.toLocaleLowerCase()) || 
-  number.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
- )
-
-       return(
+       return (
     <div>
     
     <ul>
-    {filterContacts.map((contact) =>{return (
+    {contacts.map((contact) =>{
+      return (
     <li key={contact.id}>
     {contact.name}:{contact.number}
-    <button type="submit" onClick={()=>dispatch(deleteContact(contacts))}> Delete</button>
+    <button type="submit" onClick={()=>handleDeleteContact(id)}> Delete</button>
     </li>
     )
     })}

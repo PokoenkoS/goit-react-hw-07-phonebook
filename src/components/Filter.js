@@ -1,15 +1,16 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { filterContact } from "redux/filterSlice";
+import { selectFilter } from "redux/selectors";
 
 
 const Filter = () =>{
     const dispatch = useDispatch();
-    const filter = useSelector(state=>state.filter);
+    const filter = useSelector(selectFilter);
 
  const handleFifter =(e)=> {
-    console.log(e.target.value);
-    dispatch(filterContact(e.target.value))
+   
+    dispatch(filterContact(e.currentTarget.value))
  }
    
     return (
