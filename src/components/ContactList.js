@@ -9,10 +9,8 @@ const ContactList =()=> {
 
 
   const contacts = useSelector(selectFilteredContacts);
+ 
   const dispatch = useDispatch();
-  const handleDeleteContact = ()=>{
-    dispatch(deleteContact(contacts.id))
-  }
   
 
        return (
@@ -23,7 +21,7 @@ const ContactList =()=> {
       return (
     <li key={contact.id}>
     {contact.name}:{contact.number}
-    <button type="submit" onClick={()=>handleDeleteContact(contacts.id)}> Delete</button>
+    <button type="submit" onClick={()=> dispatch(deleteContact(contact.id))}> Delete</button>
     </li>
     )
     })}
