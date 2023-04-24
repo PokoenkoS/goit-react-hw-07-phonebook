@@ -54,7 +54,7 @@ export const phoneSlice = createSlice({
         },
         [deleteContact.fulfilled]:(state, action)=> {
           
-            state.items = state.items.filter(contact => contact.id === action.payload);
+            state.items = state.items.filter(contact => contact.id !== action.payload);
             state.isLoading= false;
             state.error = null;
 

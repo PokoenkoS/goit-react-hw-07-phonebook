@@ -3,9 +3,9 @@ import React from "react";
 import { Button, FormDiv, FormLabel } from "./Main.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "redux/operations";
-// import { nanoid } from 'nanoid'
 import { selectContacts } from "redux/selectors";
 import { useState } from "react";
+
 
 
  const Form =()=>{
@@ -35,7 +35,7 @@ import { useState } from "react";
     
     if (contacts.find(item => item.name ===name
       || item.number === number )) {
-      return alert (`${contacts.name}: ${contacts.number} already in contacts` )
+      return alert (`${name}:${number} already in contacts` )
     }
   dispatch(addContact({name, number}));
    resetForm();

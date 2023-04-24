@@ -16,6 +16,6 @@ export async function addContact({name, number}) {
 }
 
 export async function deleteContact(contactId) {
-    const {data} = await axios.delete(`/contacts/${contactId}`)
-    return data
+    const {data} = axios.delete(`/contacts/${contactId}`)
+    return data;
 }

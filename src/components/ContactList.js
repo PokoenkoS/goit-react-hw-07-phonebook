@@ -5,13 +5,13 @@ import { deleteContact } from "redux/operations";
 import { selectFilteredContacts } from "redux/selectors";
 
 
-const ContactList =({id})=> {
+const ContactList =()=> {
 
 
   const contacts = useSelector(selectFilteredContacts);
   const dispatch = useDispatch();
   const handleDeleteContact = ()=>{
-    dispatch(deleteContact(id))
+    dispatch(deleteContact(contacts.id))
   }
   
 
@@ -23,7 +23,7 @@ const ContactList =({id})=> {
       return (
     <li key={contact.id}>
     {contact.name}:{contact.number}
-    <button type="submit" onClick={()=>handleDeleteContact(id)}> Delete</button>
+    <button type="submit" onClick={()=>handleDeleteContact(contacts.id)}> Delete</button>
     </li>
     )
     })}
