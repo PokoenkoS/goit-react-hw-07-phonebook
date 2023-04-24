@@ -18,7 +18,7 @@ export const addContact = createAsyncThunk('contacts/addContact', async(contactD
 
     try {
         const contacts = await fetchApi.addContact(contactData);
-        console.log(contacts);
+        
         return contacts;
         
       
